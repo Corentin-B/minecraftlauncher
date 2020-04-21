@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using CmlLib.Launcher;
 
 namespace MinecraftLauncher.MojangInformations
@@ -14,19 +15,7 @@ namespace MinecraftLauncher.MojangInformations
             Minecraft.Initialize("/game");
         }
 
-        public string LoginOnlineOffline(string username, string password, bool offline)
-        {
-            if (offline)
-            {
-                return LoginToMinecraftOffline(username);
-            }
-            else
-            {
-                return LoginToMinecraft(username, password);
-            }
-        }
-
-        private string LoginToMinecraft(string username, string password)
+        public MSession LoginToMinecraft(string username, string password)
         {
             MLogin login = new MLogin();
             MSession session = null;
@@ -39,17 +28,24 @@ namespace MinecraftLauncher.MojangInformations
 
                 if(session.Result != MLoginResult.Success)
                 {
-                    return "Erreur de login : " + session.Result.ToString();
-                   // throw new Exception("Erreur de login : " + session.Result.ToString());
+                    throw new Exception("Erreur de login : " + session.Result.ToString());
                 }
             }
-            return session.Username;
+            return session;
         }
 
-        private string LoginToMinecraftOffline(string username)
+        public MSession LoginToMinecraftOffline(string username)
         {
-            MSession session = MSession.GetOfflineSession(username);
-            return session.Username;
+            return MSession.GetOfflineSession(username);
+        }
+
+        public MProfile GetProfile()
+        {
+            MProfileInfo[] infos = MProfileInfo.GetProfiles();
+            MessageBox.Show("Infos : " + infos.ToString());
+            var local = MProfileInfo.GetProfilesFromLocal();
+            MessageBox.Show("Local : " + local.ToString());
+            return null;
         }
     }
 }

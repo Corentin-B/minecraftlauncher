@@ -1,26 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using CmlLib.Launcher;
 
 namespace MinecraftLauncher.MojangInformations
 {
     class LoginMojang
     {
-        public LoginMojang()
-        {
-            Minecraft.Initialize("/game");
-        }
-
         public MSession LoginToMinecraft(string username, string password)
         {
             MLogin login = new MLogin();
-            MSession session = null;
 
-            session = login.TryAutoLogin();
+            MSession session = login.TryAutoLogin();
             
             if(session.Result != MLoginResult.Success)
             {
@@ -28,7 +17,7 @@ namespace MinecraftLauncher.MojangInformations
 
                 if(session.Result != MLoginResult.Success)
                 {
-                    throw new Exception("Erreur de login : " + session.Result.ToString());
+                    throw new Exception(session.Result.ToString());
                 }
             }
             return session;
@@ -41,11 +30,12 @@ namespace MinecraftLauncher.MojangInformations
 
         public MProfile GetProfile()
         {
+            Minecraft.Initialize("C:\\Users\\Corentin.B\\Documents\\GitHub\\minecraftlauncher\\bin\\Debug\\Minecraft\\.minecraft");
+
             MProfileInfo[] infos = MProfileInfo.GetProfiles();
-            MessageBox.Show("Infos : " + infos.ToString());
-            var local = MProfileInfo.GetProfilesFromLocal();
-            MessageBox.Show("Local : " + local.ToString());
-            return null;
+            MProfile profile = MProfile.FindProfile(infos, "1.12.2");
+
+            return profile;
         }
     }
 }

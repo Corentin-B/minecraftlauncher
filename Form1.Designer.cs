@@ -43,17 +43,24 @@
             this.label_progressbar = new System.Windows.Forms.Label();
             this.label_info = new System.Windows.Forms.Label();
             this.panel_offline = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_offline = new System.Windows.Forms.Label();
             this.panel_online = new System.Windows.Forms.Panel();
             this.label_online = new System.Windows.Forms.Label();
-            this.panel_info = new System.Windows.Forms.Panel();
             this.panel_launch_progress = new System.Windows.Forms.Panel();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.panel_parameters = new System.Windows.Forms.Panel();
+            this.label_acountname = new System.Windows.Forms.Label();
+            this.label_mo = new System.Windows.Forms.Label();
+            this.comboBox_ramamount = new System.Windows.Forms.ComboBox();
+            this.label_parameters = new System.Windows.Forms.Label();
+            this.button_disconnect = new System.Windows.Forms.Button();
+            this.label_ram = new System.Windows.Forms.Label();
+            this.checkBox_autorun = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_baniere)).BeginInit();
             this.panel_offline.SuspendLayout();
             this.panel_online.SuspendLayout();
-            this.panel_info.SuspendLayout();
             this.panel_launch_progress.SuspendLayout();
+            this.panel_parameters.SuspendLayout();
             this.SuspendLayout();
             // 
             // label_login
@@ -117,7 +124,7 @@
             this.pictureBox_baniere.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox_baniere.Location = new System.Drawing.Point(16, 12);
             this.pictureBox_baniere.Name = "pictureBox_baniere";
-            this.pictureBox_baniere.Size = new System.Drawing.Size(856, 122);
+            this.pictureBox_baniere.Size = new System.Drawing.Size(856, 90);
             this.pictureBox_baniere.TabIndex = 5;
             this.pictureBox_baniere.TabStop = false;
             // 
@@ -197,66 +204,63 @@
             // 
             // label_progressbar
             // 
-            this.label_progressbar.AutoSize = true;
             this.label_progressbar.BackColor = System.Drawing.Color.Transparent;
             this.label_progressbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_progressbar.ForeColor = System.Drawing.Color.White;
             this.label_progressbar.Location = new System.Drawing.Point(394, 8);
             this.label_progressbar.Name = "label_progressbar";
-            this.label_progressbar.Size = new System.Drawing.Size(153, 20);
+            this.label_progressbar.Size = new System.Drawing.Size(459, 20);
             this.label_progressbar.TabIndex = 11;
             this.label_progressbar.Text = "label_progressbar";
             // 
             // label_info
             // 
-            this.label_info.AutoSize = true;
             this.label_info.BackColor = System.Drawing.Color.Transparent;
             this.label_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_info.ForeColor = System.Drawing.Color.White;
-            this.label_info.Location = new System.Drawing.Point(3, 20);
+            this.label_info.Location = new System.Drawing.Point(19, 103);
             this.label_info.Name = "label_info";
-            this.label_info.Size = new System.Drawing.Size(87, 20);
+            this.label_info.Size = new System.Drawing.Size(850, 20);
             this.label_info.TabIndex = 12;
             this.label_info.Text = "label_info";
+            this.label_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel_offline
             // 
             this.panel_offline.BackColor = System.Drawing.Color.Transparent;
-            this.panel_offline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel_offline.Controls.Add(this.label1);
+            this.panel_offline.Controls.Add(this.label_offline);
             this.panel_offline.Controls.Add(this.button_login_offline);
             this.panel_offline.Controls.Add(this.textBox_username_offline);
             this.panel_offline.Controls.Add(this.label_username_offline);
-            this.panel_offline.Location = new System.Drawing.Point(672, 140);
+            this.panel_offline.Location = new System.Drawing.Point(672, 126);
             this.panel_offline.Name = "panel_offline";
             this.panel_offline.Size = new System.Drawing.Size(200, 214);
             this.panel_offline.TabIndex = 13;
             // 
-            // label1
+            // label_offline
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label_offline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(34, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Pas de compte";
+            this.label_offline.BackColor = System.Drawing.Color.Transparent;
+            this.label_offline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_offline.ForeColor = System.Drawing.Color.White;
+            this.label_offline.Location = new System.Drawing.Point(3, 3);
+            this.label_offline.Name = "label_offline";
+            this.label_offline.Size = new System.Drawing.Size(194, 20);
+            this.label_offline.TabIndex = 8;
+            this.label_offline.Text = "Pas de compte";
+            this.label_offline.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel_online
             // 
             this.panel_online.BackColor = System.Drawing.Color.Transparent;
-            this.panel_online.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel_online.Controls.Add(this.label_online);
             this.panel_online.Controls.Add(this.button_login);
             this.panel_online.Controls.Add(this.textBox_password);
             this.panel_online.Controls.Add(this.label_password);
             this.panel_online.Controls.Add(this.textBox_username);
             this.panel_online.Controls.Add(this.label_login);
-            this.panel_online.Location = new System.Drawing.Point(466, 140);
+            this.panel_online.Location = new System.Drawing.Point(466, 126);
             this.panel_online.Name = "panel_online";
             this.panel_online.Size = new System.Drawing.Size(200, 214);
             this.panel_online.TabIndex = 14;
@@ -265,24 +269,15 @@
             // 
             this.label_online.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_online.AutoSize = true;
             this.label_online.BackColor = System.Drawing.Color.Transparent;
             this.label_online.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_online.ForeColor = System.Drawing.Color.White;
-            this.label_online.Location = new System.Drawing.Point(34, 3);
+            this.label_online.Location = new System.Drawing.Point(3, 3);
             this.label_online.Name = "label_online";
-            this.label_online.Size = new System.Drawing.Size(134, 20);
+            this.label_online.Size = new System.Drawing.Size(194, 20);
             this.label_online.TabIndex = 7;
             this.label_online.Text = "Compte Mojang";
-            // 
-            // panel_info
-            // 
-            this.panel_info.BackColor = System.Drawing.Color.Transparent;
-            this.panel_info.Controls.Add(this.label_info);
-            this.panel_info.Location = new System.Drawing.Point(16, 140);
-            this.panel_info.Name = "panel_info";
-            this.panel_info.Size = new System.Drawing.Size(444, 217);
-            this.panel_info.TabIndex = 15;
+            this.label_online.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel_launch_progress
             // 
@@ -303,6 +298,127 @@
             this.progressBar2.Size = new System.Drawing.Size(459, 24);
             this.progressBar2.TabIndex = 12;
             // 
+            // panel_parameters
+            // 
+            this.panel_parameters.BackColor = System.Drawing.Color.Transparent;
+            this.panel_parameters.Controls.Add(this.checkBox_autorun);
+            this.panel_parameters.Controls.Add(this.label_acountname);
+            this.panel_parameters.Controls.Add(this.label_mo);
+            this.panel_parameters.Controls.Add(this.comboBox_ramamount);
+            this.panel_parameters.Controls.Add(this.label_parameters);
+            this.panel_parameters.Controls.Add(this.button_disconnect);
+            this.panel_parameters.Controls.Add(this.label_ram);
+            this.panel_parameters.Location = new System.Drawing.Point(16, 126);
+            this.panel_parameters.Name = "panel_parameters";
+            this.panel_parameters.Size = new System.Drawing.Size(444, 214);
+            this.panel_parameters.TabIndex = 15;
+            // 
+            // label_acountname
+            // 
+            this.label_acountname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_acountname.BackColor = System.Drawing.Color.Transparent;
+            this.label_acountname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_acountname.ForeColor = System.Drawing.Color.White;
+            this.label_acountname.Location = new System.Drawing.Point(3, 36);
+            this.label_acountname.Name = "label_acountname";
+            this.label_acountname.Size = new System.Drawing.Size(438, 20);
+            this.label_acountname.TabIndex = 10;
+            this.label_acountname.Text = "label_acountname";
+            // 
+            // label_mo
+            // 
+            this.label_mo.AutoSize = true;
+            this.label_mo.BackColor = System.Drawing.Color.Transparent;
+            this.label_mo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_mo.ForeColor = System.Drawing.Color.White;
+            this.label_mo.Location = new System.Drawing.Point(211, 140);
+            this.label_mo.Name = "label_mo";
+            this.label_mo.Size = new System.Drawing.Size(33, 20);
+            this.label_mo.TabIndex = 9;
+            this.label_mo.Text = "Mo";
+            this.label_mo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox_ramamount
+            // 
+            this.comboBox_ramamount.BackColor = System.Drawing.Color.Black;
+            this.comboBox_ramamount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox_ramamount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ramamount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_ramamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_ramamount.ForeColor = System.Drawing.Color.White;
+            this.comboBox_ramamount.FormattingEnabled = true;
+            this.comboBox_ramamount.ItemHeight = 20;
+            this.comboBox_ramamount.Items.AddRange(new object[] {
+            "2048",
+            "3072",
+            "4096",
+            "5120",
+            "6144",
+            "7168",
+            "8192"});
+            this.comboBox_ramamount.Location = new System.Drawing.Point(113, 137);
+            this.comboBox_ramamount.Name = "comboBox_ramamount";
+            this.comboBox_ramamount.Size = new System.Drawing.Size(92, 28);
+            this.comboBox_ramamount.TabIndex = 8;
+            this.comboBox_ramamount.Tag = "";
+            this.comboBox_ramamount.SelectedIndexChanged += new System.EventHandler(this.comboBox_ramamount_SelectedIndexChanged);
+            // 
+            // label_parameters
+            // 
+            this.label_parameters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_parameters.BackColor = System.Drawing.Color.Transparent;
+            this.label_parameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_parameters.ForeColor = System.Drawing.Color.White;
+            this.label_parameters.Location = new System.Drawing.Point(3, 3);
+            this.label_parameters.Name = "label_parameters";
+            this.label_parameters.Size = new System.Drawing.Size(438, 20);
+            this.label_parameters.TabIndex = 7;
+            this.label_parameters.Text = "Minecraft parameters";
+            this.label_parameters.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button_disconnect
+            // 
+            this.button_disconnect.BackColor = System.Drawing.Color.Transparent;
+            this.button_disconnect.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_disconnect.BackgroundImage")));
+            this.button_disconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_disconnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_disconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_disconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_disconnect.ForeColor = System.Drawing.Color.Transparent;
+            this.button_disconnect.Location = new System.Drawing.Point(132, 178);
+            this.button_disconnect.Name = "button_disconnect";
+            this.button_disconnect.Size = new System.Drawing.Size(180, 33);
+            this.button_disconnect.TabIndex = 6;
+            this.button_disconnect.Text = "Logout";
+            this.button_disconnect.UseVisualStyleBackColor = false;
+            this.button_disconnect.Click += new System.EventHandler(this.button_disconnect_Click);
+            // 
+            // label_ram
+            // 
+            this.label_ram.AutoSize = true;
+            this.label_ram.BackColor = System.Drawing.Color.Transparent;
+            this.label_ram.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ram.ForeColor = System.Drawing.Color.White;
+            this.label_ram.Location = new System.Drawing.Point(3, 140);
+            this.label_ram.Name = "label_ram";
+            this.label_ram.Size = new System.Drawing.Size(104, 20);
+            this.label_ram.TabIndex = 1;
+            this.label_ram.Text = "Ram utiliser";
+            // 
+            // checkBox_autorun
+            // 
+            this.checkBox_autorun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_autorun.ForeColor = System.Drawing.Color.White;
+            this.checkBox_autorun.Location = new System.Drawing.Point(7, 82);
+            this.checkBox_autorun.Name = "checkBox_autorun";
+            this.checkBox_autorun.Size = new System.Drawing.Size(434, 24);
+            this.checkBox_autorun.TabIndex = 11;
+            this.checkBox_autorun.Text = "Autorun";
+            this.checkBox_autorun.UseVisualStyleBackColor = true;
+            this.checkBox_autorun.CheckedChanged += new System.EventHandler(this.checkBox_autorun_CheckedChanged);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,7 +426,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(884, 461);
-            this.Controls.Add(this.panel_info);
+            this.Controls.Add(this.label_info);
+            this.Controls.Add(this.panel_parameters);
             this.Controls.Add(this.panel_online);
             this.Controls.Add(this.panel_offline);
             this.Controls.Add(this.pictureBox_baniere);
@@ -320,15 +437,15 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Artemia Launcher";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_baniere)).EndInit();
             this.panel_offline.ResumeLayout(false);
             this.panel_offline.PerformLayout();
             this.panel_online.ResumeLayout(false);
             this.panel_online.PerformLayout();
-            this.panel_info.ResumeLayout(false);
-            this.panel_info.PerformLayout();
             this.panel_launch_progress.ResumeLayout(false);
-            this.panel_launch_progress.PerformLayout();
+            this.panel_parameters.ResumeLayout(false);
+            this.panel_parameters.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -350,11 +467,18 @@
         private System.Windows.Forms.Label label_info;
         private System.Windows.Forms.Panel panel_offline;
         private System.Windows.Forms.Panel panel_online;
-        private System.Windows.Forms.Panel panel_info;
         private System.Windows.Forms.Panel panel_launch_progress;
         private System.Windows.Forms.Label label_online;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_offline;
         private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Panel panel_parameters;
+        private System.Windows.Forms.Label label_parameters;
+        private System.Windows.Forms.Button button_disconnect;
+        private System.Windows.Forms.Label label_ram;
+        private System.Windows.Forms.Label label_mo;
+        private System.Windows.Forms.ComboBox comboBox_ramamount;
+        private System.Windows.Forms.Label label_acountname;
+        private System.Windows.Forms.CheckBox checkBox_autorun;
     }
 }
 

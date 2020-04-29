@@ -1,5 +1,6 @@
 ﻿using CmlLib.Launcher;
 using System;
+using System.IO;
 
 namespace MinecraftLauncher.MojangInformations
 {
@@ -9,19 +10,21 @@ namespace MinecraftLauncher.MojangInformations
         {
             int ramNumber = Checkram(ram);
 
-            MLaunchOption option = LaunchOption(profile, session, ramNumber);
+            string javapath = Directory.GetCurrentDirectory() + @"\Minecraft\runtime\jre-x64\bin\javaw.exe";
+
+            MLaunchOption option = LaunchOption(profile, session, ramNumber, javapath);
 
             MLaunch launch = new MLaunch(option);
             launch.GetProcess().Start();
         }
 
-        private MLaunchOption LaunchOption(MProfile profile, MSession session , int ramNumber)
+        private MLaunchOption LaunchOption(MProfile profile, MSession session, int ramNumber, string javapath)
         {
             return new MLaunchOption()
             {
                 // must require
                 StartProfile = profile,
-                JavaPath = @"C:\Program Files (x86)\Minecraft Launcher\runtime\jre-x64\bin\javaw.exe", // javapath
+                JavaPath = javapath,
                 MaximumRamMb = ramNumber, // MB
                 Session = session,
 

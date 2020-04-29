@@ -50,6 +50,7 @@
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.panel_parameters = new System.Windows.Forms.Panel();
             this.checkBox_autorun = new System.Windows.Forms.CheckBox();
+            this.checkBox_autologin = new System.Windows.Forms.CheckBox();
             this.label_acountname = new System.Windows.Forms.Label();
             this.label_mo = new System.Windows.Forms.Label();
             this.comboBox_ramamount = new System.Windows.Forms.ComboBox();
@@ -286,6 +287,7 @@
             this.panel_launch_progress.Controls.Add(this.progressBar1);
             this.panel_launch_progress.Controls.Add(this.button_run);
             this.panel_launch_progress.Controls.Add(this.label_progressbar);
+            this.panel_launch_progress.Enabled = false;
             this.panel_launch_progress.Location = new System.Drawing.Point(16, 363);
             this.panel_launch_progress.Name = "panel_launch_progress";
             this.panel_launch_progress.Size = new System.Drawing.Size(856, 86);
@@ -302,12 +304,14 @@
             // 
             this.panel_parameters.BackColor = System.Drawing.Color.Transparent;
             this.panel_parameters.Controls.Add(this.checkBox_autorun);
+            this.panel_parameters.Controls.Add(this.checkBox_autologin);
             this.panel_parameters.Controls.Add(this.label_acountname);
             this.panel_parameters.Controls.Add(this.label_mo);
             this.panel_parameters.Controls.Add(this.comboBox_ramamount);
             this.panel_parameters.Controls.Add(this.label_parameters);
             this.panel_parameters.Controls.Add(this.button_disconnect);
             this.panel_parameters.Controls.Add(this.label_ram);
+            this.panel_parameters.Enabled = false;
             this.panel_parameters.Location = new System.Drawing.Point(16, 126);
             this.panel_parameters.Name = "panel_parameters";
             this.panel_parameters.Size = new System.Drawing.Size(444, 214);
@@ -317,13 +321,25 @@
             // 
             this.checkBox_autorun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_autorun.ForeColor = System.Drawing.Color.White;
-            this.checkBox_autorun.Location = new System.Drawing.Point(7, 82);
+            this.checkBox_autorun.Location = new System.Drawing.Point(7, 96);
             this.checkBox_autorun.Name = "checkBox_autorun";
             this.checkBox_autorun.Size = new System.Drawing.Size(434, 24);
-            this.checkBox_autorun.TabIndex = 11;
-            this.checkBox_autorun.Text = "Autorun";
+            this.checkBox_autorun.TabIndex = 12;
+            this.checkBox_autorun.Text = "Auto Run";
             this.checkBox_autorun.UseVisualStyleBackColor = true;
             this.checkBox_autorun.CheckedChanged += new System.EventHandler(this.checkBox_autorun_CheckedChanged);
+            // 
+            // checkBox_autologin
+            // 
+            this.checkBox_autologin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_autologin.ForeColor = System.Drawing.Color.White;
+            this.checkBox_autologin.Location = new System.Drawing.Point(7, 66);
+            this.checkBox_autologin.Name = "checkBox_autologin";
+            this.checkBox_autologin.Size = new System.Drawing.Size(434, 24);
+            this.checkBox_autologin.TabIndex = 11;
+            this.checkBox_autologin.Text = "Auto Login";
+            this.checkBox_autologin.UseVisualStyleBackColor = true;
+            this.checkBox_autologin.CheckedChanged += new System.EventHandler(this.checkBox_autologin_CheckedChanged);
             // 
             // label_acountname
             // 
@@ -387,7 +403,7 @@
             this.label_parameters.Name = "label_parameters";
             this.label_parameters.Size = new System.Drawing.Size(438, 20);
             this.label_parameters.TabIndex = 7;
-            this.label_parameters.Text = "Minecraft parameters";
+            this.label_parameters.Text = "Parameters";
             this.label_parameters.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_disconnect
@@ -432,6 +448,7 @@
             this.Controls.Add(this.panel_offline);
             this.Controls.Add(this.pictureBox_baniere);
             this.Controls.Add(this.panel_launch_progress);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormMain";
@@ -478,6 +495,7 @@
         private System.Windows.Forms.Label label_mo;
         private System.Windows.Forms.ComboBox comboBox_ramamount;
         private System.Windows.Forms.Label label_acountname;
+        private System.Windows.Forms.CheckBox checkBox_autologin;
         private System.Windows.Forms.CheckBox checkBox_autorun;
     }
 }

@@ -9,13 +9,13 @@ namespace MinecraftLauncher.MojangInformations
         {
             int ramNumber = Checkram(ram);
 
-            MLaunchOption option = launchOption(profile, session, ramNumber);
+            MLaunchOption option = LaunchOption(profile, session, ramNumber);
 
             MLaunch launch = new MLaunch(option);
             launch.GetProcess().Start();
         }
 
-        private MLaunchOption launchOption(MProfile profile, MSession session , int ramNumber)
+        private MLaunchOption LaunchOption(MProfile profile, MSession session , int ramNumber)
         {
             return new MLaunchOption()
             {
@@ -26,7 +26,7 @@ namespace MinecraftLauncher.MojangInformations
                 Session = session,
 
                 // not require
-                ServerIp = "GAME-FR-251.MTXSERV.COM:27150", // connect server directly
+                //ServerIp = "GAME-FR-251.MTXSERV.COM:27150", // connect server directly //Unknow Host
                 LauncherName = "Artemia", // display launcher name at main window
                 CustomJavaParameter = "-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M" // set your own java args                                                                                                                                                                                       // set your own java args
             };

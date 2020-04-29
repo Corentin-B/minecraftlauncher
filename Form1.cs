@@ -1,4 +1,5 @@
 ﻿using MinecraftLauncher.MojangInformations;
+using MinecraftLauncher.Threads;
 using System;
 using System.Windows.Forms;
 using CmlLib.Launcher;
@@ -9,8 +10,11 @@ namespace MinecraftLauncher
 {
     public partial class FormMain : Form
     {
-        MSession sessionUtilisateur = null;
-        MProfile profileUtilisateur = null;
+        private MSession sessionUtilisateur;
+        private MProfile profileUtilisateur;
+
+        public MSession SessionUtilisateur { get => sessionUtilisateur; set => sessionUtilisateur = value; }
+        public MProfile ProfileUtilisateur { get => profileUtilisateur; set => profileUtilisateur = value; }
 
         public FormMain()
         {
@@ -18,30 +22,23 @@ namespace MinecraftLauncher
             label_info.Text = "";
             label_acountname.Text = "";
             label_progressbar.Text = "";
-            panel_launch_progress.Enabled = false;
-            panel_parameters.Enabled = false;
         }
 
         #region Events
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            checkBox_autorun.Checked = Properties.Settings.Default.autorun;
-            comboBox_ramamount.Text = Properties.Settings.Default.ramAmount;
-            textBox_email.Text = Properties.Settings.Default.email;
-            textBox_password.Text = Properties.Settings.Default.password;
-            textBox_username_offline.Text = Properties.Settings.Default.offlineUsername;
+            bool autorun = checkBox_autorun.Checked = Properties.Settings.Default.autorun;
+            checkBox_autologin.Checked = Properties.Settings.Default.autologin;
+            string ram = comboBox_ramamount.Text = Properties.Settings.Default.ramAmount;
+            string email = textBox_email.Text = Properties.Settings.Default.email;
+            string password = textBox_password.Text = Properties.Settings.Default.password;
+            string username = textBox_username_offline.Text = Properties.Settings.Default.offlineUsername;
 
-            string email = textBox_email.Text;
-            string password = textBox_password.Text;
-            string username = textBox_username_offline.Text;
-            bool autorun = checkBox_autorun.Checked;
-            string ram = comboBox_ramamount.Text;
-
-            if (checkBox_autorun.Checked)
+            if (checkBox_autologin.Checked)
             {
-                Thread threadAutoLogin = new Thread(() => ThreadAutoLogin(email, password, username, autorun, ram));
-                threadAutoLogin.Start();
+                AutoLogin autoLogin = new AutoLogin(this);
+                autoLogin.LoginAuto(email, password, username, autorun, ram);
             }
         }
 
@@ -55,9 +52,9 @@ namespace MinecraftLauncher
             {
                 if (!String.IsNullOrEmpty(textBox_password.Text) && !String.IsNullOrWhiteSpace(textBox_password.Text))
                 {
-                    Thread threadLoginMojang = new Thread(new ThreadStart(ThreadLoginMojang));
-                    threadLoginMojang.Start();
                     textBox_username_offline.Text = "";
+                    ThreadLogin threadLogin = new ThreadLogin(this);
+                    threadLogin.ThreadLoginMojang(textBox_email.Text, textBox_password.Text);
                 }
                 else
                     label_info.Text = "Entrez votre mot de passe";
@@ -72,15 +69,14 @@ namespace MinecraftLauncher
 
             if (!String.IsNullOrEmpty(textBox_username_offline.Text) && !String.IsNullOrWhiteSpace(textBox_username_offline.Text))
             {
-                Thread threadLoginOffline = new Thread(new ThreadStart(ThreadLoginOffline));
-                threadLoginOffline.Start();
                 textBox_email.Text = "";
                 textBox_password.Text = "";
+
+                ThreadLogin threadLogin = new ThreadLogin(this);
+                threadLogin.ThreadLoginOffline(textBox_username_offline.Text);
             }
             else
-            {
                 label_info.Text = "Entrez un nom d'utilisateur";
-            }
         }
 
         private void button_run_Click(object sender, EventArgs e)
@@ -106,6 +102,12 @@ namespace MinecraftLauncher
             Properties.Settings.Default.Save();
         }
 
+        private void checkBox_autologin_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.autologin = checkBox_autologin.Checked;
+            Properties.Settings.Default.Save();
+        }
+
         private void checkBox_autorun_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.autorun = checkBox_autorun.Checked;
@@ -113,104 +115,6 @@ namespace MinecraftLauncher
         }
 
         #endregion
-
-        private void ThreadAutoLogin(string email, string password, string username, bool autorun, string ramamount)
-        {
-            pannelswitch(false);
-            sessionUtilisateur = null;
-
-            if (!String.IsNullOrEmpty(email) && !String.IsNullOrWhiteSpace(email) && !String.IsNullOrEmpty(password) && !String.IsNullOrWhiteSpace(password))
-            {
-                Thread threadLoginMojang = new Thread(new ThreadStart(ThreadLoginMojang));
-                threadLoginMojang.Start();
-                threadLoginMojang.Join();
-            }
-            else if (String.IsNullOrEmpty(username) && String.IsNullOrWhiteSpace(username))
-            {
-                Thread threadLoginOffline = new Thread(new ThreadStart(ThreadLoginOffline));
-                threadLoginOffline.Start();
-                threadLoginOffline.Join();
-            }
-            
-            if (sessionUtilisateur != null && autorun)
-                AutoRun(ramamount);
-        }
-
-        private void AutoRun(string ramamount)
-        {
-            Thread threadRunGame = new Thread(() => ThreadRunGame(ramamount));
-            threadRunGame.Start();
-            infoLabel("Running Minecraft");
-            PannelLaunch(false);
-        }
-
-        private void ThreadLoginMojang()
-        {
-            try
-            {
-                LoginMojang loginMojang = new LoginMojang();
-                sessionUtilisateur = loginMojang.LoginToMinecraft(textBox_email.Text, textBox_password.Text);
-
-                if (sessionUtilisateur != null)
-                {
-                    acountnameLabel("Bonjour " + sessionUtilisateur.Username);
-                }
-                else
-                {
-                    infoLabel("Erreur de login");
-                    sessionUtilisateur = null;
-                    pannelswitch(true);
-                }
-            }
-            catch (Exception ex)
-            {
-                infoLabel("Error login incorrecte \n" + ex);//TODO Traiter les Exceptions
-                sessionUtilisateur = null;
-                pannelswitch(true);
-            }
-            try
-            {
-                if (sessionUtilisateur != null)
-                {
-                    Checkprofile();
-                }
-            }
-            catch (Exception exep)
-            {
-                MessageBox.Show("Erreur profil");
-            }
-        }
-
-        private void ThreadLoginOffline()
-        {
-            pannelswitch(false);
-
-            LoginMojang loginMojang = new LoginMojang();
-            sessionUtilisateur = loginMojang.LoginToMinecraftOffline(textBox_username_offline.Text);
-
-            acountnameLabel("Bonjour " + sessionUtilisateur.Username);
-            Checkprofile();
-        }
-
-        private void Checkprofile()
-        {
-            LoginMojang loginMojang = new LoginMojang();
-            profileUtilisateur = loginMojang.GetProfile();
-            DownloadGame(profileUtilisateur);
-
-            Invoke((MethodInvoker)delegate
-            {
-                panel_launch_progress.Enabled = true;
-            });
-        }
-
-        private void DownloadGame(MProfile profile)
-        {
-            MDownloader downloader = new MDownloader(profile);
-            downloader.ChangeFile += Downloader_ChangeFile;
-            downloader.ChangeProgress += Downloader_ChangeProgress;
-            downloader.DownloadAll();
-        }
 
         private void ThreadRunGame(string ramAmount)
         {
@@ -220,7 +124,7 @@ namespace MinecraftLauncher
 
         #region Update Interface
 
-        private void Downloader_ChangeProgress(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        public void Downloader_ChangeProgress(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             Invoke((MethodInvoker)delegate
             {
@@ -228,7 +132,7 @@ namespace MinecraftLauncher
             });
         }
 
-        private void Downloader_ChangeFile(DownloadFileChangedEventArgs e)
+        public void Downloader_ChangeFile(DownloadFileChangedEventArgs e)
         {
             Invoke((MethodInvoker)delegate
             {
@@ -238,7 +142,7 @@ namespace MinecraftLauncher
             });
         }
 
-        private void pannelswitch(bool value)
+        public void pannelswitch(bool value)
         {
             Invoke((MethodInvoker)delegate
             {
@@ -248,7 +152,7 @@ namespace MinecraftLauncher
             });
         }
 
-        private void PannelLaunch(bool value)
+        public void PannelLaunch(bool value)
         {
             Invoke((MethodInvoker)delegate
             {
@@ -256,7 +160,7 @@ namespace MinecraftLauncher
             });
         }
 
-        private void infoLabel(string message)
+        public void infoLabel(string message)
         {
             Invoke((MethodInvoker)delegate
             {
@@ -264,7 +168,7 @@ namespace MinecraftLauncher
             });
         }
 
-        private void acountnameLabel(string message)
+        public void acountnameLabel(string message)
         {
             Invoke((MethodInvoker)delegate
             {

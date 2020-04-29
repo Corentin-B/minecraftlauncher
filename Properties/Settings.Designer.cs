@@ -82,5 +82,17 @@ namespace MinecraftLauncher.Properties {
                 this["ramAmount"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool autologin {
+            get {
+                return ((bool)(this["autologin"]));
+            }
+            set {
+                this["autologin"] = value;
+            }
+        }
     }
 }

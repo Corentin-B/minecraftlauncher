@@ -1,55 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 using CmlLib.Launcher;
 
 namespace MinecraftLauncher.MojangInformations
 {
     class LoginMojang
     {
-        public LoginMojang()
-        {
-            Minecraft.Initialize("/game");
-        }
+        const string MINECRAFT_VERSION = "1.12.2-forge1.12.2-14.23.5.2847";
 
-        public string LoginOnlineOffline(string username, string password, bool offline)
-        {
-            if (offline)
-            {
-                return LoginToMinecraftOffline(username);
-            }
-            else
-            {
-                return LoginToMinecraft(username, password);
-            }
-        }
-
-        private string LoginToMinecraft(string username, string password)
+        public MSession LoginToMinecraft(string email, string password)
         {
             MLogin login = new MLogin();
-            MSession session = null;
 
-            session = login.TryAutoLogin();
-            
-            if(session.Result != MLoginResult.Success)
+            MSession session = login.Authenticate(email, password);
+
+            if (session.Result != MLoginResult.Success)
             {
-                session = login.Authenticate(username, password);
-
-                if(session.Result != MLoginResult.Success)
-                {
-                    return "Erreur de login : " + session.Result.ToString();
-                   // throw new Exception("Erreur de login : " + session.Result.ToString());
-                }
+                throw new Exception(session.Result.ToString());
             }
-            return session.Username;
+
+            Properties.Settings.Default.email = email;
+            Properties.Settings.Default.password = password;
+            Properties.Settings.Default.Save();
+
+            return session;
         }
 
-        private string LoginToMinecraftOffline(string username)
+        public MSession LoginToMinecraftOffline(string username)
         {
-            MSession session = MSession.GetOfflineSession(username);
-            return session.Username;
+            Properties.Settings.Default.offlineUsername = username;
+            Properties.Settings.Default.Save();
+
+            return MSession.GetOfflineSession(username);
+        }
+
+        public MSession AutoLogin()
+        {
+            MLogin login = new MLogin();
+
+            MSession session = login.TryAutoLogin();
+
+            if (session.Result != MLoginResult.Success)
+            {
+                return null;
+            }
+            return session;
+        }
+
+        public MProfile GetProfile()
+        {
+            Minecraft.Initialize(Directory.GetCurrentDirectory() + @"\Minecraft\.minecraft");
+
+            MProfileInfo[] versions = MProfileInfo.GetProfiles(); // Get MProfileInfo[]
+            MProfile profile = MProfile.FindProfile(versions, MINECRAFT_VERSION);
+
+            return profile;
         }
     }
 }

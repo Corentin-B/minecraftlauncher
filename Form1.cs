@@ -9,8 +9,8 @@ namespace MinecraftLauncher
 {
     public partial class FormMain : Form
     {
-        MSession sessionUtilisateur;
-        MProfile profileUtilisateur;
+        MSession sessionUtilisateur = null;
+        MProfile profileUtilisateur = null;
 
         public FormMain()
         {
@@ -26,17 +26,23 @@ namespace MinecraftLauncher
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(Properties.Settings.Default.ramAmount);
             checkBox_autorun.Checked = Properties.Settings.Default.autorun;
             comboBox_ramamount.Text = Properties.Settings.Default.ramAmount;
-
-            textBox_username.Text = Properties.Settings.Default.email;
+            textBox_email.Text = Properties.Settings.Default.email;
             textBox_password.Text = Properties.Settings.Default.password;
-
             textBox_username_offline.Text = Properties.Settings.Default.offlineUsername;
 
+            string email = textBox_email.Text;
+            string password = textBox_password.Text;
+            string username = textBox_username_offline.Text;
+            bool autorun = checkBox_autorun.Checked;
+            string ram = comboBox_ramamount.Text;
+
             if (checkBox_autorun.Checked)
-                Autologin();
+            {
+                Thread threadAutoLogin = new Thread(() => ThreadAutoLogin(email, password, username, autorun, ram));
+                threadAutoLogin.Start();
+            }
         }
 
         private void button_login_Click(object sender, EventArgs e)
@@ -45,22 +51,35 @@ namespace MinecraftLauncher
             sessionUtilisateur = null;
             label_info.Text = "";
 
-            Thread threadLoginMojang = new Thread(new ThreadStart(ThreadLoginMojang));
-            threadLoginMojang.Start();
+            if (!String.IsNullOrEmpty(textBox_email.Text) && !String.IsNullOrWhiteSpace(textBox_email.Text))
+            {
+                if (!String.IsNullOrEmpty(textBox_password.Text) && !String.IsNullOrWhiteSpace(textBox_password.Text))
+                {
+                    Thread threadLoginMojang = new Thread(new ThreadStart(ThreadLoginMojang));
+                    threadLoginMojang.Start();
+                    textBox_username_offline.Text = "";
+                }
+                else
+                    label_info.Text = "Entrez votre mot de passe";
+            }
+            else
+                label_info.Text = "Entrez votre adresse mail";
         }
 
         private void button_login_offline_Click(object sender, EventArgs e)
         {
             sessionUtilisateur = null;
 
-            if (String.IsNullOrEmpty(textBox_username_offline.Text) || String.IsNullOrWhiteSpace(textBox_username_offline.Text))
-            {
-                label_info.Text = "Entrez un nom d'utilisateur";
-            }
-            else
+            if (!String.IsNullOrEmpty(textBox_username_offline.Text) && !String.IsNullOrWhiteSpace(textBox_username_offline.Text))
             {
                 Thread threadLoginOffline = new Thread(new ThreadStart(ThreadLoginOffline));
                 threadLoginOffline.Start();
+                textBox_email.Text = "";
+                textBox_password.Text = "";
+            }
+            else
+            {
+                label_info.Text = "Entrez un nom d'utilisateur";
             }
         }
 
@@ -95,21 +114,34 @@ namespace MinecraftLauncher
 
         #endregion
 
-        private void Autologin()
+        private void ThreadAutoLogin(string email, string password, string username, bool autorun, string ramamount)
         {
             pannelswitch(false);
             sessionUtilisateur = null;
-            label_info.Text = "";
 
-            if (false)
+            if (!String.IsNullOrEmpty(email) && !String.IsNullOrWhiteSpace(email) && !String.IsNullOrEmpty(password) && !String.IsNullOrWhiteSpace(password))
             {
                 Thread threadLoginMojang = new Thread(new ThreadStart(ThreadLoginMojang));
                 threadLoginMojang.Start();
+                threadLoginMojang.Join();
             }
-            else if (false)
+            else if (String.IsNullOrEmpty(username) && String.IsNullOrWhiteSpace(username))
             {
-
+                Thread threadLoginOffline = new Thread(new ThreadStart(ThreadLoginOffline));
+                threadLoginOffline.Start();
+                threadLoginOffline.Join();
             }
+            
+            if (sessionUtilisateur != null && autorun)
+                AutoRun(ramamount);
+        }
+
+        private void AutoRun(string ramamount)
+        {
+            Thread threadRunGame = new Thread(() => ThreadRunGame(ramamount));
+            threadRunGame.Start();
+            infoLabel("Running Minecraft");
+            PannelLaunch(false);
         }
 
         private void ThreadLoginMojang()
@@ -117,7 +149,7 @@ namespace MinecraftLauncher
             try
             {
                 LoginMojang loginMojang = new LoginMojang();
-                sessionUtilisateur = loginMojang.LoginToMinecraft(textBox_username.Text, textBox_password.Text);
+                sessionUtilisateur = loginMojang.LoginToMinecraft(textBox_email.Text, textBox_password.Text);
 
                 if (sessionUtilisateur != null)
                 {
@@ -132,7 +164,7 @@ namespace MinecraftLauncher
             }
             catch (Exception ex)
             {
-                infoLabel("Error login incorrecte \n" + ex);
+                infoLabel("Error login incorrecte \n" + ex);//TODO Traiter les Exceptions
                 sessionUtilisateur = null;
                 pannelswitch(true);
             }
@@ -145,7 +177,7 @@ namespace MinecraftLauncher
             }
             catch (Exception exep)
             {
-                MessageBox.Show("Erreur : " + exep);
+                MessageBox.Show("Erreur profil");
             }
         }
 
@@ -213,6 +245,14 @@ namespace MinecraftLauncher
                 panel_offline.Enabled = value;
                 panel_online.Enabled = value;
                 panel_parameters.Enabled = !value;
+            });
+        }
+
+        private void PannelLaunch(bool value)
+        {
+            Invoke((MethodInvoker)delegate
+            {
+                panel_launch_progress.Enabled = value;
             });
         }
 

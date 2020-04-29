@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.label_login = new System.Windows.Forms.Label();
             this.label_password = new System.Windows.Forms.Label();
-            this.textBox_username = new System.Windows.Forms.TextBox();
+            this.textBox_email = new System.Windows.Forms.TextBox();
             this.textBox_password = new System.Windows.Forms.TextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.pictureBox_baniere = new System.Windows.Forms.PictureBox();
@@ -49,13 +49,13 @@
             this.panel_launch_progress = new System.Windows.Forms.Panel();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.panel_parameters = new System.Windows.Forms.Panel();
+            this.checkBox_autorun = new System.Windows.Forms.CheckBox();
             this.label_acountname = new System.Windows.Forms.Label();
             this.label_mo = new System.Windows.Forms.Label();
             this.comboBox_ramamount = new System.Windows.Forms.ComboBox();
             this.label_parameters = new System.Windows.Forms.Label();
             this.button_disconnect = new System.Windows.Forms.Button();
             this.label_ram = new System.Windows.Forms.Label();
-            this.checkBox_autorun = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_baniere)).BeginInit();
             this.panel_offline.SuspendLayout();
             this.panel_online.SuspendLayout();
@@ -87,16 +87,16 @@
             this.label_password.TabIndex = 1;
             this.label_password.Text = "Mot de passe";
             // 
-            // textBox_username
+            // textBox_email
             // 
-            this.textBox_username.BackColor = System.Drawing.Color.Black;
-            this.textBox_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_username.ForeColor = System.Drawing.Color.White;
-            this.textBox_username.Location = new System.Drawing.Point(3, 64);
-            this.textBox_username.Name = "textBox_username";
-            this.textBox_username.Size = new System.Drawing.Size(194, 26);
-            this.textBox_username.TabIndex = 2;
+            this.textBox_email.BackColor = System.Drawing.Color.Black;
+            this.textBox_email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_email.ForeColor = System.Drawing.Color.White;
+            this.textBox_email.Location = new System.Drawing.Point(3, 64);
+            this.textBox_email.Name = "textBox_email";
+            this.textBox_email.Size = new System.Drawing.Size(194, 26);
+            this.textBox_email.TabIndex = 2;
             // 
             // textBox_password
             // 
@@ -258,7 +258,7 @@
             this.panel_online.Controls.Add(this.button_login);
             this.panel_online.Controls.Add(this.textBox_password);
             this.panel_online.Controls.Add(this.label_password);
-            this.panel_online.Controls.Add(this.textBox_username);
+            this.panel_online.Controls.Add(this.textBox_email);
             this.panel_online.Controls.Add(this.label_login);
             this.panel_online.Location = new System.Drawing.Point(466, 126);
             this.panel_online.Name = "panel_online";
@@ -312,6 +312,18 @@
             this.panel_parameters.Name = "panel_parameters";
             this.panel_parameters.Size = new System.Drawing.Size(444, 214);
             this.panel_parameters.TabIndex = 15;
+            // 
+            // checkBox_autorun
+            // 
+            this.checkBox_autorun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_autorun.ForeColor = System.Drawing.Color.White;
+            this.checkBox_autorun.Location = new System.Drawing.Point(7, 82);
+            this.checkBox_autorun.Name = "checkBox_autorun";
+            this.checkBox_autorun.Size = new System.Drawing.Size(434, 24);
+            this.checkBox_autorun.TabIndex = 11;
+            this.checkBox_autorun.Text = "Autorun";
+            this.checkBox_autorun.UseVisualStyleBackColor = true;
+            this.checkBox_autorun.CheckedChanged += new System.EventHandler(this.checkBox_autorun_CheckedChanged);
             // 
             // label_acountname
             // 
@@ -407,18 +419,6 @@
             this.label_ram.TabIndex = 1;
             this.label_ram.Text = "Ram utiliser";
             // 
-            // checkBox_autorun
-            // 
-            this.checkBox_autorun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_autorun.ForeColor = System.Drawing.Color.White;
-            this.checkBox_autorun.Location = new System.Drawing.Point(7, 82);
-            this.checkBox_autorun.Name = "checkBox_autorun";
-            this.checkBox_autorun.Size = new System.Drawing.Size(434, 24);
-            this.checkBox_autorun.TabIndex = 11;
-            this.checkBox_autorun.Text = "Autorun";
-            this.checkBox_autorun.UseVisualStyleBackColor = true;
-            this.checkBox_autorun.CheckedChanged += new System.EventHandler(this.checkBox_autorun_CheckedChanged);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,7 +454,7 @@
 
         private System.Windows.Forms.Label label_login;
         private System.Windows.Forms.Label label_password;
-        private System.Windows.Forms.TextBox textBox_username;
+        private System.Windows.Forms.TextBox textBox_email;
         private System.Windows.Forms.TextBox textBox_password;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.PictureBox pictureBox_baniere;

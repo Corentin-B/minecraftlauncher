@@ -1,10 +1,6 @@
 ﻿using MinecraftLauncher.MojangInformations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using CmlLib.Launcher;
 
 namespace MinecraftLauncher.Threads
@@ -53,7 +49,7 @@ namespace MinecraftLauncher.Threads
         {
             Thread threadRunGame = new Thread(() => ThreadRunGame(ramamount));
             threadRunGame.Start();
-            formMain.infoLabel("Running Minecraft");
+            formMain.InfoLabel("Running Minecraft");
             formMain.PannelLaunch(false);
         }
 

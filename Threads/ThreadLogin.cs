@@ -29,7 +29,7 @@ namespace MinecraftLauncher.Threads
 
         public void ThreadLoginMojang(string email, string password)
         {
-            MSession sessionUtilisateur; //TODO C'est trop gros
+            MSession sessionUtilisateur;
 
             try
             {
@@ -38,18 +38,18 @@ namespace MinecraftLauncher.Threads
 
                 if (sessionUtilisateur != null)
                 {
-                    formMain.acountnameLabel("Bonjour " + sessionUtilisateur.Username);
+                    formMain.AcountnameLabel("Bonjour " + sessionUtilisateur.Username);
                 }
                 else
                 {
-                    formMain.infoLabel("Erreur de login");
+                    formMain.InfoLabel("Erreur de login");
                     sessionUtilisateur = null;
                     formMain.pannelswitch(true);
                 }
             }
             catch (Exception ex)
             {
-                formMain.infoLabel("Error login incorrecte \n" + ex);//TODO Traiter les Exceptions
+                formMain.InfoLabel("Error login incorrecte");//TODO Traiter les Exceptions
                 sessionUtilisateur = null;
                 formMain.pannelswitch(true);
             }
@@ -76,7 +76,7 @@ namespace MinecraftLauncher.Threads
             LoginMojang loginMojang = new LoginMojang();
             MSession sessionUtilisateur = loginMojang.LoginToMinecraftOffline(username);
 
-            formMain.acountnameLabel("Bonjour " + sessionUtilisateur.Username);
+            formMain.AcountnameLabel("Bonjour " + sessionUtilisateur.Username);
             Checkprofile();
 
             formMain.SessionUtilisateur = sessionUtilisateur;

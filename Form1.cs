@@ -4,7 +4,6 @@ using System;
 using System.Windows.Forms;
 using CmlLib.Launcher;
 using System.Threading;
-using System.IO;
 
 namespace MinecraftLauncher
 {
@@ -160,7 +159,7 @@ namespace MinecraftLauncher
             });
         }
 
-        public void infoLabel(string message)
+        public void InfoLabel(string message)
         {
             Invoke((MethodInvoker)delegate
             {
@@ -168,7 +167,7 @@ namespace MinecraftLauncher
             });
         }
 
-        public void acountnameLabel(string message)
+        public void AcountnameLabel(string message)
         {
             Invoke((MethodInvoker)delegate
             {

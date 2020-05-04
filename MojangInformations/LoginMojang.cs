@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Windows.Forms;
 using CmlLib.Launcher;
 
 namespace MinecraftLauncher.MojangInformations
@@ -12,7 +11,6 @@ namespace MinecraftLauncher.MojangInformations
         public MSession LoginToMinecraft(string email, string password)
         {
             MLogin login = new MLogin();
-
             MSession session = login.Authenticate(email, password);
 
             if (session.Result != MLoginResult.Success)
@@ -22,6 +20,7 @@ namespace MinecraftLauncher.MojangInformations
 
             Properties.Settings.Default.email = email;
             Properties.Settings.Default.password = password;
+            Properties.Settings.Default.offlineUsername = "";
             Properties.Settings.Default.Save();
 
             return session;
@@ -30,6 +29,8 @@ namespace MinecraftLauncher.MojangInformations
         public MSession LoginToMinecraftOffline(string username)
         {
             Properties.Settings.Default.offlineUsername = username;
+            Properties.Settings.Default.email = "";
+            Properties.Settings.Default.password = "";
             Properties.Settings.Default.Save();
 
             return MSession.GetOfflineSession(username);
@@ -38,7 +39,6 @@ namespace MinecraftLauncher.MojangInformations
         public MSession AutoLogin()
         {
             MLogin login = new MLogin();
-
             MSession session = login.TryAutoLogin();
 
             if (session.Result != MLoginResult.Success)

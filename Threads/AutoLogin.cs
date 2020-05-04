@@ -9,40 +9,29 @@ namespace MinecraftLauncher.Threads
     {
         private readonly FormMain formMain;
 
-        public AutoLogin(FormMain form)
+        public AutoLogin(FormMain form, Connection_elements connection_elements)
         {
             formMain = form;
-        }
-
-        public void LoginAuto(string email, string password, string username, bool autorun, string ramamount)
-        {
-            Thread threadAutoLogin = new Thread(() => ThreadAutoLogin(email, password, username, autorun, ramamount));
+            Thread threadAutoLogin = new Thread(() => ThreadAutoLogin(connection_elements)) ;
             threadAutoLogin.Start();
         }
 
-        private void ThreadAutoLogin(string email, string password, string username, bool autorun, string ramamount)
+        private void ThreadAutoLogin(Connection_elements connection_elements)
         {
-            formMain.pannelswitch(false);
-            MSession sessionUtilisateur = null;
+            formMain.PannelSwitch(false);
             ThreadLogin threadLogin = new ThreadLogin(formMain);
 
-            if (!String.IsNullOrEmpty(email) && !String.IsNullOrWhiteSpace(email) && !String.IsNullOrEmpty(password) && !String.IsNullOrWhiteSpace(password))
+            if (!String.IsNullOrEmpty(connection_elements.Email) && !String.IsNullOrWhiteSpace(connection_elements.Email) && !String.IsNullOrEmpty(connection_elements.Password) && !String.IsNullOrWhiteSpace(connection_elements.Password))
             {
-                Thread threadLoginMojang = new Thread(() => threadLogin.ThreadLoginMojang(email, password));
-                threadLoginMojang.Start();
-                threadLoginMojang.Join();
+                threadLogin.ThreadLoginMojang(connection_elements.Email, connection_elements.Password);
             }
-            else if (String.IsNullOrEmpty(username) && String.IsNullOrWhiteSpace(username))
+            else if (String.IsNullOrEmpty(connection_elements.Username) && String.IsNullOrWhiteSpace(connection_elements.Username))
             {
-                Thread threadLoginOffline = new Thread(() => threadLogin.ThreadLoginOffline(username));
-                threadLoginOffline.Start();
-                threadLoginOffline.Join();
+                threadLogin.ThreadLoginOffline(connection_elements.Username);
             }
 
-            sessionUtilisateur = formMain.SessionUtilisateur;
-
-            if (sessionUtilisateur != null && autorun)
-                AutoRun(ramamount);
+            if (formMain.SessionUtilisateur != null && formMain.ProfileUtilisateur != null && connection_elements.Autorun)
+                AutoRun(connection_elements.Ramamount);
         }
 
         private void AutoRun(string ramamount)
@@ -55,9 +44,10 @@ namespace MinecraftLauncher.Threads
 
         private void ThreadRunGame(string ramAmount)
         {
-            runMinecraft runMinecraft = new runMinecraft();
+            RunMinecraft runMinecraft = new RunMinecraft();
             MSession sessionUtilisateur = formMain.SessionUtilisateur;
             MProfile profileUtilisateur = formMain.ProfileUtilisateur;
+            CheckProgramRunning checkProgramRunning = new CheckProgramRunning(formMain, "Minecraft");
 
             runMinecraft.Run(profileUtilisateur, sessionUtilisateur, ramAmount);
         }

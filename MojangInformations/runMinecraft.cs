@@ -4,7 +4,7 @@ using System.IO;
 
 namespace MinecraftLauncher.MojangInformations
 {
-    class runMinecraft
+    class RunMinecraft
     {
         public void Run(MProfile profile, MSession session, string ram)
         {
@@ -38,7 +38,7 @@ namespace MinecraftLauncher.MojangInformations
         private int Checkram(string ram)
         {
             int ramNumber = Int32.Parse(ram);
-            if (ramNumber % 1024 == 0)
+            if (ramNumber != 0 && ramNumber % 1024 == 0)
             {
                 return ramNumber;
             }

@@ -29,41 +29,28 @@ namespace MinecraftLauncher.Threads
 
         public void ThreadLoginMojang(string email, string password)
         {
-            MSession sessionUtilisateur;
+            MSession sessionUtilisateur = null;
 
             try
             {
                 LoginMojang loginMojang = new LoginMojang();
                 sessionUtilisateur = loginMojang.LoginToMinecraft(email, password);
 
-                if (sessionUtilisateur != null)
+                formMain.AcountnameLabel("Bonjour " + sessionUtilisateur.Username);
+
+                try
                 {
-                    formMain.AcountnameLabel("Bonjour " + sessionUtilisateur.Username);
+                    Checkprofile();
                 }
-                else
+                catch (Exception exep)
                 {
-                    formMain.InfoLabel("Erreur de login");
-                    sessionUtilisateur = null;
-                    formMain.pannelswitch(true);
+                    MessageBox.Show("Erreur profil");
                 }
             }
             catch (Exception ex)
             {
-                formMain.InfoLabel("Error login incorrecte");//TODO Traiter les Exceptions
-                sessionUtilisateur = null;
-                formMain.pannelswitch(true);
-            }
-
-            try
-            {
-                if (sessionUtilisateur != null)
-                {
-                    Checkprofile();
-                }
-            }
-            catch (Exception exep)
-            {
-                MessageBox.Show("Erreur profil");
+                formMain.InfoLabel("Error login incorrecte");
+                formMain.PannelSwitch(true);
             }
 
             formMain.SessionUtilisateur = sessionUtilisateur;
@@ -71,7 +58,7 @@ namespace MinecraftLauncher.Threads
 
         public void ThreadLoginOffline(string username)
         {
-            formMain.pannelswitch(false);
+            formMain.PannelSwitch(false);
 
             LoginMojang loginMojang = new LoginMojang();
             MSession sessionUtilisateur = loginMojang.LoginToMinecraftOffline(username);

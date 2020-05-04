@@ -9,11 +9,8 @@ namespace MinecraftLauncher
 {
     public partial class FormMain : Form
     {
-        private MSession sessionUtilisateur;
-        private MProfile profileUtilisateur;
-
-        public MSession SessionUtilisateur { get => sessionUtilisateur; set => sessionUtilisateur = value; }
-        public MProfile ProfileUtilisateur { get => profileUtilisateur; set => profileUtilisateur = value; }
+        public MSession SessionUtilisateur { get; set; }
+        public MProfile ProfileUtilisateur { get; set; }
 
         public FormMain()
         {
@@ -36,15 +33,15 @@ namespace MinecraftLauncher
 
             if (checkBox_autologin.Checked)
             {
-                AutoLogin autoLogin = new AutoLogin(this);
-                autoLogin.LoginAuto(email, password, username, autorun, ram);
+                Connection_elements connection_elements = new Connection_elements(email, password, username, autorun, ram);
+                AutoLogin autoLogin = new AutoLogin(this, connection_elements);
             }
         }
 
         private void button_login_Click(object sender, EventArgs e)
         {
-            pannelswitch(false);
-            sessionUtilisateur = null;
+            PannelSwitch(false);
+            SessionUtilisateur = null;
             label_info.Text = "";
 
             if (!String.IsNullOrEmpty(textBox_email.Text) && !String.IsNullOrWhiteSpace(textBox_email.Text))
@@ -54,21 +51,24 @@ namespace MinecraftLauncher
                     textBox_username_offline.Text = "";
                     ThreadLogin threadLogin = new ThreadLogin(this);
                     threadLogin.LoginMojang(textBox_email.Text, textBox_password.Text);
-
-                    Properties.Settings.Default.email = textBox_email.Text;
-                    Properties.Settings.Default.password = textBox_password.Text;
-                    Properties.Settings.Default.Save();
                 }
                 else
+                {
                     label_info.Text = "Entrez votre mot de passe";
+                    PannelSwitch(true);
+                }
             }
             else
+            {
                 label_info.Text = "Entrez votre adresse mail";
+                PannelSwitch(true);
+            }
         }
 
         private void button_login_offline_Click(object sender, EventArgs e)
         {
-            sessionUtilisateur = null;
+            PannelSwitch(true);
+            SessionUtilisateur = null;
 
             if (!String.IsNullOrEmpty(textBox_username_offline.Text) && !String.IsNullOrWhiteSpace(textBox_username_offline.Text))
             {
@@ -77,29 +77,33 @@ namespace MinecraftLauncher
 
                 ThreadLogin threadLogin = new ThreadLogin(this);
                 threadLogin.LoginMojang(textBox_username_offline.Text);
-
-                Properties.Settings.Default.offlineUsername = textBox_username_offline.Text;
-                Properties.Settings.Default.Save();
             }
             else
+            {
                 label_info.Text = "Entrez un nom d'utilisateur";
+                PannelSwitch(true);
+            }
         }
 
         private void button_run_Click(object sender, EventArgs e)
         {
             panel_parameters.Enabled = false;
             string ramamount = comboBox_ramamount.Text;
-
-            Thread threadRunGame = new Thread(() => ThreadRunGame(ramamount));
-            threadRunGame.Start();
-            label_info.Text = "Running Minecraft";
+            if (SessionUtilisateur != null && ProfileUtilisateur != null)
+            {
+                Thread threadRunGame = new Thread(() => ThreadRunGame(ramamount));
+                threadRunGame.Start();
+                label_info.Text = "Running Minecraft";
+            }
+            else
+                label_info.Text = "Erreur lancement Minecraft";
         }
 
         private void button_disconnect_Click(object sender, EventArgs e)
         {
-            sessionUtilisateur = null;
-            profileUtilisateur = null;
-            pannelswitch(true);
+            SessionUtilisateur = null;
+            ProfileUtilisateur = null;
+            PannelSwitch(true);
         }
 
         private void comboBox_ramamount_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,8 +128,9 @@ namespace MinecraftLauncher
 
         private void ThreadRunGame(string ramAmount)
         {
-            runMinecraft runMinecraft = new runMinecraft();
-            runMinecraft.Run(profileUtilisateur, sessionUtilisateur, ramAmount);
+            RunMinecraft runMinecraft = new RunMinecraft();
+            runMinecraft.Run(ProfileUtilisateur, SessionUtilisateur, ramAmount);
+            CheckProgramRunning checkProgramRunning = new CheckProgramRunning(this, "Minecraft");
         }
 
         #region Update Interface
@@ -148,7 +153,7 @@ namespace MinecraftLauncher
             });
         }
 
-        public void pannelswitch(bool value)
+        public void PannelSwitch(bool value)
         {
             Invoke((MethodInvoker)delegate
             {

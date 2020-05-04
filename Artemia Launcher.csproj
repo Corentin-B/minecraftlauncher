@@ -63,6 +63,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,12 +81,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MojangInformations\JavaPath.cs" />
+    <Compile Include="MojangInformations\Connection elements.cs" />
     <Compile Include="MojangInformations\LoginMojang.cs" />
-    <Compile Include="MojangInformations\runMinecraft.cs" />
+    <Compile Include="MojangInformations\RunMinecraft.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Threads\AutoLogin.cs" />
+    <Compile Include="Threads\CheckProgramRunning.cs" />
     <Compile Include="Threads\ThreadLogin.cs" />
     <Compile Include="TreatException.cs" />
     <Compile Include="Updates\UpdateGame.cs" />

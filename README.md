@@ -16,6 +16,7 @@ $ ./tree-md .
  * .minecraft
    * mods
    * versions
+   * launcher_profiles.json
    * servers.dat
  * runtime
 

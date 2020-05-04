@@ -53,7 +53,11 @@ namespace MinecraftLauncher
                 {
                     textBox_username_offline.Text = "";
                     ThreadLogin threadLogin = new ThreadLogin(this);
-                    threadLogin.ThreadLoginMojang(textBox_email.Text, textBox_password.Text);
+                    threadLogin.LoginMojang(textBox_email.Text, textBox_password.Text);
+
+                    Properties.Settings.Default.email = textBox_email.Text;
+                    Properties.Settings.Default.password = textBox_password.Text;
+                    Properties.Settings.Default.Save();
                 }
                 else
                     label_info.Text = "Entrez votre mot de passe";
@@ -72,7 +76,10 @@ namespace MinecraftLauncher
                 textBox_password.Text = "";
 
                 ThreadLogin threadLogin = new ThreadLogin(this);
-                threadLogin.ThreadLoginOffline(textBox_username_offline.Text);
+                threadLogin.LoginMojang(textBox_username_offline.Text);
+
+                Properties.Settings.Default.offlineUsername = textBox_username_offline.Text;
+                Properties.Settings.Default.Save();
             }
             else
                 label_info.Text = "Entrez un nom d'utilisateur";

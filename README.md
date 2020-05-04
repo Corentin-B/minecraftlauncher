@@ -27,11 +27,10 @@ $ ./tree-md .
 .
  * .minecraft
    * mods
-     * mod.jar
+    * mod.jar
    * versions
    * *minecraftversion*
-     * *minecraftversion*.json
-   * [file12.ext](./dir1/file12.ext)
+    * minecraftversion.json
    * launcher_profiles.json
    * servers.dat
  * runtime

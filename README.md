@@ -10,29 +10,12 @@
 
 Next to .exe application
 
-Minecraft
-.
-├── .minecraft
-|   ├── mods
-|   |    └── *mod*.jar
-|   ├── versions
-|   |    └── *minecraftversion*
-|   |         └── *minecraftversion*.json
-|   ├── launcher_profiles.json
-|   └── servers.dat
-└── .minecraft
-
+In Minecraft folder
 $ ./tree-md .
 # Project tree
-
-.
  * .minecraft
    * mods
-    * mod.jar
    * versions
-   * *minecraftversion*
-    * minecraftversion.json
-   * launcher_profiles.json
    * servers.dat
  * runtime
 

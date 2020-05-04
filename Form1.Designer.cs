@@ -70,7 +70,7 @@
             this.label_login.BackColor = System.Drawing.Color.Transparent;
             this.label_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_login.ForeColor = System.Drawing.Color.White;
-            this.label_login.Location = new System.Drawing.Point(3, 41);
+            this.label_login.Location = new System.Drawing.Point(3, 30);
             this.label_login.Name = "label_login";
             this.label_login.Size = new System.Drawing.Size(112, 20);
             this.label_login.TabIndex = 0;
@@ -82,7 +82,7 @@
             this.label_password.BackColor = System.Drawing.Color.Transparent;
             this.label_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_password.ForeColor = System.Drawing.Color.White;
-            this.label_password.Location = new System.Drawing.Point(3, 111);
+            this.label_password.Location = new System.Drawing.Point(3, 91);
             this.label_password.Name = "label_password";
             this.label_password.Size = new System.Drawing.Size(117, 20);
             this.label_password.TabIndex = 1;
@@ -90,22 +90,22 @@
             // 
             // textBox_email
             // 
-            this.textBox_email.BackColor = System.Drawing.Color.Black;
+            this.textBox_email.BackColor = System.Drawing.Color.White;
             this.textBox_email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_email.ForeColor = System.Drawing.Color.White;
-            this.textBox_email.Location = new System.Drawing.Point(3, 64);
+            this.textBox_email.ForeColor = System.Drawing.Color.Black;
+            this.textBox_email.Location = new System.Drawing.Point(3, 53);
             this.textBox_email.Name = "textBox_email";
             this.textBox_email.Size = new System.Drawing.Size(194, 26);
             this.textBox_email.TabIndex = 2;
             // 
             // textBox_password
             // 
-            this.textBox_password.BackColor = System.Drawing.Color.Black;
+            this.textBox_password.BackColor = System.Drawing.Color.White;
             this.textBox_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_password.ForeColor = System.Drawing.Color.White;
-            this.textBox_password.Location = new System.Drawing.Point(3, 134);
+            this.textBox_password.ForeColor = System.Drawing.Color.Black;
+            this.textBox_password.Location = new System.Drawing.Point(3, 114);
             this.textBox_password.Name = "textBox_password";
             this.textBox_password.PasswordChar = '*';
             this.textBox_password.Size = new System.Drawing.Size(194, 26);
@@ -125,7 +125,7 @@
             this.pictureBox_baniere.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox_baniere.Location = new System.Drawing.Point(16, 12);
             this.pictureBox_baniere.Name = "pictureBox_baniere";
-            this.pictureBox_baniere.Size = new System.Drawing.Size(856, 90);
+            this.pictureBox_baniere.Size = new System.Drawing.Size(856, 110);
             this.pictureBox_baniere.TabIndex = 5;
             this.pictureBox_baniere.TabStop = false;
             // 
@@ -135,10 +135,11 @@
             this.button_login.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_login.BackgroundImage")));
             this.button_login.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_login.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_login.FlatAppearance.BorderSize = 0;
             this.button_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_login.ForeColor = System.Drawing.Color.Transparent;
-            this.button_login.Location = new System.Drawing.Point(3, 178);
+            this.button_login.Location = new System.Drawing.Point(3, 158);
             this.button_login.Name = "button_login";
             this.button_login.Size = new System.Drawing.Size(194, 33);
             this.button_login.TabIndex = 6;
@@ -152,6 +153,7 @@
             this.button_run.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_run.BackgroundImage")));
             this.button_run.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_run.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_run.FlatAppearance.BorderSize = 0;
             this.button_run.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_run.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_run.ForeColor = System.Drawing.Color.Transparent;
@@ -169,10 +171,11 @@
             this.button_login_offline.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_login_offline.BackgroundImage")));
             this.button_login_offline.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_login_offline.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_login_offline.FlatAppearance.BorderSize = 0;
             this.button_login_offline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_login_offline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_login_offline.ForeColor = System.Drawing.Color.Transparent;
-            this.button_login_offline.Location = new System.Drawing.Point(3, 178);
+            this.button_login_offline.Location = new System.Drawing.Point(3, 158);
             this.button_login_offline.Name = "button_login_offline";
             this.button_login_offline.Size = new System.Drawing.Size(194, 33);
             this.button_login_offline.TabIndex = 8;
@@ -182,11 +185,11 @@
             // 
             // textBox_username_offline
             // 
-            this.textBox_username_offline.BackColor = System.Drawing.Color.Black;
+            this.textBox_username_offline.BackColor = System.Drawing.Color.White;
             this.textBox_username_offline.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_username_offline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_username_offline.ForeColor = System.Drawing.Color.White;
-            this.textBox_username_offline.Location = new System.Drawing.Point(3, 134);
+            this.textBox_username_offline.ForeColor = System.Drawing.Color.Black;
+            this.textBox_username_offline.Location = new System.Drawing.Point(3, 114);
             this.textBox_username_offline.Name = "textBox_username_offline";
             this.textBox_username_offline.Size = new System.Drawing.Size(194, 26);
             this.textBox_username_offline.TabIndex = 10;
@@ -197,7 +200,7 @@
             this.label_username_offline.BackColor = System.Drawing.Color.Transparent;
             this.label_username_offline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_username_offline.ForeColor = System.Drawing.Color.White;
-            this.label_username_offline.Location = new System.Drawing.Point(3, 111);
+            this.label_username_offline.Location = new System.Drawing.Point(3, 91);
             this.label_username_offline.Name = "label_username_offline";
             this.label_username_offline.Size = new System.Drawing.Size(143, 20);
             this.label_username_offline.TabIndex = 9;
@@ -219,9 +222,9 @@
             this.label_info.BackColor = System.Drawing.Color.Transparent;
             this.label_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_info.ForeColor = System.Drawing.Color.White;
-            this.label_info.Location = new System.Drawing.Point(19, 103);
+            this.label_info.Location = new System.Drawing.Point(19, 124);
             this.label_info.Name = "label_info";
-            this.label_info.Size = new System.Drawing.Size(850, 20);
+            this.label_info.Size = new System.Drawing.Size(850, 21);
             this.label_info.TabIndex = 12;
             this.label_info.Text = "label_info";
             this.label_info.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -233,9 +236,9 @@
             this.panel_offline.Controls.Add(this.button_login_offline);
             this.panel_offline.Controls.Add(this.textBox_username_offline);
             this.panel_offline.Controls.Add(this.label_username_offline);
-            this.panel_offline.Location = new System.Drawing.Point(672, 126);
+            this.panel_offline.Location = new System.Drawing.Point(671, 149);
             this.panel_offline.Name = "panel_offline";
-            this.panel_offline.Size = new System.Drawing.Size(200, 214);
+            this.panel_offline.Size = new System.Drawing.Size(200, 209);
             this.panel_offline.TabIndex = 13;
             // 
             // label_offline
@@ -245,7 +248,7 @@
             this.label_offline.BackColor = System.Drawing.Color.Transparent;
             this.label_offline.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_offline.ForeColor = System.Drawing.Color.White;
-            this.label_offline.Location = new System.Drawing.Point(3, 3);
+            this.label_offline.Location = new System.Drawing.Point(3, 1);
             this.label_offline.Name = "label_offline";
             this.label_offline.Size = new System.Drawing.Size(194, 20);
             this.label_offline.TabIndex = 8;
@@ -261,9 +264,9 @@
             this.panel_online.Controls.Add(this.label_password);
             this.panel_online.Controls.Add(this.textBox_email);
             this.panel_online.Controls.Add(this.label_login);
-            this.panel_online.Location = new System.Drawing.Point(466, 126);
+            this.panel_online.Location = new System.Drawing.Point(465, 149);
             this.panel_online.Name = "panel_online";
-            this.panel_online.Size = new System.Drawing.Size(200, 214);
+            this.panel_online.Size = new System.Drawing.Size(200, 209);
             this.panel_online.TabIndex = 14;
             // 
             // label_online
@@ -273,7 +276,7 @@
             this.label_online.BackColor = System.Drawing.Color.Transparent;
             this.label_online.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_online.ForeColor = System.Drawing.Color.White;
-            this.label_online.Location = new System.Drawing.Point(3, 3);
+            this.label_online.Location = new System.Drawing.Point(3, 1);
             this.label_online.Name = "label_online";
             this.label_online.Size = new System.Drawing.Size(194, 20);
             this.label_online.TabIndex = 7;
@@ -312,16 +315,16 @@
             this.panel_parameters.Controls.Add(this.button_disconnect);
             this.panel_parameters.Controls.Add(this.label_ram);
             this.panel_parameters.Enabled = false;
-            this.panel_parameters.Location = new System.Drawing.Point(16, 126);
+            this.panel_parameters.Location = new System.Drawing.Point(15, 149);
             this.panel_parameters.Name = "panel_parameters";
-            this.panel_parameters.Size = new System.Drawing.Size(444, 214);
+            this.panel_parameters.Size = new System.Drawing.Size(444, 209);
             this.panel_parameters.TabIndex = 15;
             // 
             // checkBox_autorun
             // 
             this.checkBox_autorun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_autorun.ForeColor = System.Drawing.Color.White;
-            this.checkBox_autorun.Location = new System.Drawing.Point(7, 96);
+            this.checkBox_autorun.Location = new System.Drawing.Point(7, 83);
             this.checkBox_autorun.Name = "checkBox_autorun";
             this.checkBox_autorun.Size = new System.Drawing.Size(434, 24);
             this.checkBox_autorun.TabIndex = 12;
@@ -333,7 +336,7 @@
             // 
             this.checkBox_autologin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox_autologin.ForeColor = System.Drawing.Color.White;
-            this.checkBox_autologin.Location = new System.Drawing.Point(7, 66);
+            this.checkBox_autologin.Location = new System.Drawing.Point(7, 53);
             this.checkBox_autologin.Name = "checkBox_autologin";
             this.checkBox_autologin.Size = new System.Drawing.Size(434, 24);
             this.checkBox_autologin.TabIndex = 11;
@@ -348,7 +351,7 @@
             this.label_acountname.BackColor = System.Drawing.Color.Transparent;
             this.label_acountname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_acountname.ForeColor = System.Drawing.Color.White;
-            this.label_acountname.Location = new System.Drawing.Point(3, 36);
+            this.label_acountname.Location = new System.Drawing.Point(3, 23);
             this.label_acountname.Name = "label_acountname";
             this.label_acountname.Size = new System.Drawing.Size(438, 20);
             this.label_acountname.TabIndex = 10;
@@ -360,7 +363,7 @@
             this.label_mo.BackColor = System.Drawing.Color.Transparent;
             this.label_mo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_mo.ForeColor = System.Drawing.Color.White;
-            this.label_mo.Location = new System.Drawing.Point(211, 140);
+            this.label_mo.Location = new System.Drawing.Point(211, 120);
             this.label_mo.Name = "label_mo";
             this.label_mo.Size = new System.Drawing.Size(33, 20);
             this.label_mo.TabIndex = 9;
@@ -369,12 +372,11 @@
             // 
             // comboBox_ramamount
             // 
-            this.comboBox_ramamount.BackColor = System.Drawing.Color.Black;
+            this.comboBox_ramamount.BackColor = System.Drawing.Color.White;
             this.comboBox_ramamount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox_ramamount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_ramamount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox_ramamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox_ramamount.ForeColor = System.Drawing.Color.White;
+            this.comboBox_ramamount.ForeColor = System.Drawing.Color.Black;
             this.comboBox_ramamount.FormattingEnabled = true;
             this.comboBox_ramamount.ItemHeight = 20;
             this.comboBox_ramamount.Items.AddRange(new object[] {
@@ -385,7 +387,7 @@
             "6144",
             "7168",
             "8192"});
-            this.comboBox_ramamount.Location = new System.Drawing.Point(113, 137);
+            this.comboBox_ramamount.Location = new System.Drawing.Point(113, 117);
             this.comboBox_ramamount.Name = "comboBox_ramamount";
             this.comboBox_ramamount.Size = new System.Drawing.Size(92, 28);
             this.comboBox_ramamount.TabIndex = 8;
@@ -399,7 +401,7 @@
             this.label_parameters.BackColor = System.Drawing.Color.Transparent;
             this.label_parameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_parameters.ForeColor = System.Drawing.Color.White;
-            this.label_parameters.Location = new System.Drawing.Point(3, 3);
+            this.label_parameters.Location = new System.Drawing.Point(3, 1);
             this.label_parameters.Name = "label_parameters";
             this.label_parameters.Size = new System.Drawing.Size(438, 20);
             this.label_parameters.TabIndex = 7;
@@ -412,10 +414,11 @@
             this.button_disconnect.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button_disconnect.BackgroundImage")));
             this.button_disconnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button_disconnect.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_disconnect.FlatAppearance.BorderSize = 0;
             this.button_disconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_disconnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_disconnect.ForeColor = System.Drawing.Color.Transparent;
-            this.button_disconnect.Location = new System.Drawing.Point(132, 178);
+            this.button_disconnect.Location = new System.Drawing.Point(132, 158);
             this.button_disconnect.Name = "button_disconnect";
             this.button_disconnect.Size = new System.Drawing.Size(180, 33);
             this.button_disconnect.TabIndex = 6;
@@ -429,7 +432,7 @@
             this.label_ram.BackColor = System.Drawing.Color.Transparent;
             this.label_ram.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ram.ForeColor = System.Drawing.Color.White;
-            this.label_ram.Location = new System.Drawing.Point(3, 140);
+            this.label_ram.Location = new System.Drawing.Point(3, 120);
             this.label_ram.Name = "label_ram";
             this.label_ram.Size = new System.Drawing.Size(104, 20);
             this.label_ram.TabIndex = 1;

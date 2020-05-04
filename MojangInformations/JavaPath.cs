@@ -9,19 +9,13 @@ namespace MinecraftLauncher.MojangInformations
         public string chechJavawPath(string javawlocation)
         {
             if (String.IsNullOrEmpty(javawlocation))
-            {
                 return GetJavaPath() + @"\bin\javaw.exe";
-            }
             else
             {
                 if (File.Exists(javawlocation))
-                {
                     return javawlocation;
-                }
                 else
-                {
                     return GetJavaPath() + @"\bin\javaw.exe";
-                }
             }
         }
 
@@ -31,13 +25,9 @@ namespace MinecraftLauncher.MojangInformations
             string javalocation = checkRegsitry("JDK");
 
             if (javalocation != null && javalocation != "")
-            {
                 return javalocation;
-            }
             else
-            {
                 return checkRegsitry("Java Runtime Environment");
-            }
         }
         //"Java Runtime Environment - CurrentVersion"
         private string checkRegsitry(string typeJava)

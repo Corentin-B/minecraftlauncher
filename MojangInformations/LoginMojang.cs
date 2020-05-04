@@ -7,7 +7,7 @@ namespace MinecraftLauncher.MojangInformations
 {
     class LoginMojang
     {
-        const string MINECRAFT_VERSION = "1.12.2-forge1.12.2-14.23.5.2847";
+        private const string MINECRAFT_VERSION = "1.12.2-forge1.12.2-14.23.5.2847";
 
         public MSession LoginToMinecraft(string email, string password)
         {
@@ -52,7 +52,7 @@ namespace MinecraftLauncher.MojangInformations
         {
             Minecraft.Initialize(Directory.GetCurrentDirectory() + @"\Minecraft\.minecraft");
 
-            MProfileInfo[] versions = MProfileInfo.GetProfiles(); // Get MProfileInfo[]
+            MProfileInfo[] versions = MProfileInfo.GetProfiles();
             MProfile profile = MProfile.FindProfile(versions, MINECRAFT_VERSION);
 
             return profile;

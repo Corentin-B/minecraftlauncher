@@ -11,6 +11,7 @@
 Next to .exe application
 
 Minecraft
+.
 ├── .minecraft
 |   ├── mods
 |   |    └── *mod*.jar

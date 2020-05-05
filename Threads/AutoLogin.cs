@@ -36,20 +36,17 @@ namespace MinecraftLauncher.Threads
 
         private void AutoRun(string ramamount)
         {
-            Thread threadRunGame = new Thread(() => ThreadRunGame(ramamount));
-            threadRunGame.Start();
-            formMain.InfoLabel("Running Minecraft");
+            ThreadRunGame(ramamount);
+            formMain.InfoLabel("Initialisation de Minecraft");
             formMain.PannelLaunch(false);
         }
 
         private void ThreadRunGame(string ramAmount)
         {
             RunMinecraft runMinecraft = new RunMinecraft();
-            MSession sessionUtilisateur = formMain.SessionUtilisateur;
-            MProfile profileUtilisateur = formMain.ProfileUtilisateur;
-            CheckProgramRunning checkProgramRunning = new CheckProgramRunning(formMain, "Minecraft");
-
-            runMinecraft.Run(profileUtilisateur, sessionUtilisateur, ramAmount);
+            formMain.InfoLabel("Running Minecraft");
+            runMinecraft.Run(formMain.ProfileUtilisateur, formMain.SessionUtilisateur, ramAmount);
+            new CheckProgramRunning(formMain);
         }
     }
 }

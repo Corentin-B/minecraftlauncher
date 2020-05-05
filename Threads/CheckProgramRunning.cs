@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Management;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MinecraftLauncher.Threads
 {
@@ -14,41 +7,45 @@ namespace MinecraftLauncher.Threads
     {
         private readonly FormMain formMain;
 
-        public CheckProgramRunning(FormMain form, string program)
+        public CheckProgramRunning(FormMain form)
         {
             formMain = form;
-            Thread threadWaitProgram = new Thread(() => WaitProgram(program));
-            threadWaitProgram.Start();
+            WaitProgram();
         }
 
-        private void WaitProgram(string program)
+        private void WaitProgram()
         {
             int timeout = 0;
-            while (!IsRunning(program) && timeout < 10)
+            while (!IsRunning() && timeout < 10)
             {
                 Thread.Sleep(3000);
                 timeout++;
             }
 
             if (timeout < 10)
-                formMain.InfoLabel("Lancement complet");
+                formMain.InfoLabel("Minecraft lancé");
             else
             {
                 formMain.InfoLabel("Erreur de lancement : Timeout");
-                formMain.PannelLaunch(true);
             }
+
+            formMain.PannelLaunch(true);
+            formMain.PannelSwitch(false);
         }
 
-        private bool IsRunning(string program)
+        private bool IsRunning()
         {
-            Process[] listprocess = Process.GetProcessesByName(program);
+            bool processFind = false;
 
-            MessageBox.Show(listprocess.ToString());
+            Process[] listprocess = Process.GetProcessesByName("javaw");
 
-            if (listprocess.Length != 0)
-                return true;
-            else
-                return false;
+            foreach (var item in listprocess)
+            {
+                if (item.MainWindowTitle == "Minecraft 1.12.2")
+                    processFind = true;
+            }
+
+            return processFind;
         }
     }
 }

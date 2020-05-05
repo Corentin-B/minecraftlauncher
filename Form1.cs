@@ -34,7 +34,7 @@ namespace MinecraftLauncher
             if (checkBox_autologin.Checked)
             {
                 Connection_elements connection_elements = new Connection_elements(email, password, username, autorun, ram);
-                AutoLogin autoLogin = new AutoLogin(this, connection_elements);
+                new AutoLogin(this, connection_elements);
             }
         }
 
@@ -88,6 +88,7 @@ namespace MinecraftLauncher
         private void button_run_Click(object sender, EventArgs e)
         {
             panel_parameters.Enabled = false;
+            panel_launch_progress.Enabled = false;
             string ramamount = comboBox_ramamount.Text;
             if (SessionUtilisateur != null && ProfileUtilisateur != null)
             {
@@ -130,7 +131,7 @@ namespace MinecraftLauncher
         {
             RunMinecraft runMinecraft = new RunMinecraft();
             runMinecraft.Run(ProfileUtilisateur, SessionUtilisateur, ramAmount);
-            CheckProgramRunning checkProgramRunning = new CheckProgramRunning(this, "Minecraft");
+            new CheckProgramRunning(this);
         }
 
         #region Update Interface

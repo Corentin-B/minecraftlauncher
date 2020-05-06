@@ -18,7 +18,7 @@ namespace MinecraftLauncher.Threads
             int timeout = 0;
             while (!IsRunning() && timeout < 10)
             {
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
                 timeout++;
             }
 

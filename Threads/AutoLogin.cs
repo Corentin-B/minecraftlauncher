@@ -1,7 +1,6 @@
 ﻿using MinecraftLauncher.MojangInformations;
 using System;
 using System.Threading;
-using CmlLib.Launcher;
 
 namespace MinecraftLauncher.Threads
 {

@@ -326,7 +326,7 @@
             this.checkBox_autorun.ForeColor = System.Drawing.Color.White;
             this.checkBox_autorun.Location = new System.Drawing.Point(7, 83);
             this.checkBox_autorun.Name = "checkBox_autorun";
-            this.checkBox_autorun.Size = new System.Drawing.Size(434, 24);
+            this.checkBox_autorun.Size = new System.Drawing.Size(120, 24);
             this.checkBox_autorun.TabIndex = 12;
             this.checkBox_autorun.Text = "Auto Run";
             this.checkBox_autorun.UseVisualStyleBackColor = true;
@@ -338,7 +338,7 @@
             this.checkBox_autologin.ForeColor = System.Drawing.Color.White;
             this.checkBox_autologin.Location = new System.Drawing.Point(7, 53);
             this.checkBox_autologin.Name = "checkBox_autologin";
-            this.checkBox_autologin.Size = new System.Drawing.Size(434, 24);
+            this.checkBox_autologin.Size = new System.Drawing.Size(120, 24);
             this.checkBox_autologin.TabIndex = 11;
             this.checkBox_autologin.Text = "Auto Login";
             this.checkBox_autologin.UseVisualStyleBackColor = true;
@@ -363,7 +363,7 @@
             this.label_mo.BackColor = System.Drawing.Color.Transparent;
             this.label_mo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_mo.ForeColor = System.Drawing.Color.White;
-            this.label_mo.Location = new System.Drawing.Point(211, 120);
+            this.label_mo.Location = new System.Drawing.Point(153, 120);
             this.label_mo.Name = "label_mo";
             this.label_mo.Size = new System.Drawing.Size(33, 20);
             this.label_mo.TabIndex = 9;
@@ -387,7 +387,7 @@
             "6144",
             "7168",
             "8192"});
-            this.comboBox_ramamount.Location = new System.Drawing.Point(113, 117);
+            this.comboBox_ramamount.Location = new System.Drawing.Point(55, 117);
             this.comboBox_ramamount.Name = "comboBox_ramamount";
             this.comboBox_ramamount.Size = new System.Drawing.Size(92, 28);
             this.comboBox_ramamount.TabIndex = 8;
@@ -434,9 +434,9 @@
             this.label_ram.ForeColor = System.Drawing.Color.White;
             this.label_ram.Location = new System.Drawing.Point(3, 120);
             this.label_ram.Name = "label_ram";
-            this.label_ram.Size = new System.Drawing.Size(104, 20);
+            this.label_ram.Size = new System.Drawing.Size(46, 20);
             this.label_ram.TabIndex = 1;
-            this.label_ram.Text = "Ram utiliser";
+            this.label_ram.Text = "Ram";
             // 
             // FormMain
             // 
@@ -451,6 +451,7 @@
             this.Controls.Add(this.panel_offline);
             this.Controls.Add(this.pictureBox_baniere);
             this.Controls.Add(this.panel_launch_progress);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
